@@ -1,4 +1,4 @@
-# Versie: 0.2.0
+# Versie: 0.2.1
 """Elsner P03/3 weerstation (RS485) - ESPHome-component.
 
 De hub leest het RS485-protocol van het weerstation via een UART en koppelt de
@@ -15,6 +15,9 @@ from .const import CONF_ANALYSE_INTERVAL
 
 CODEOWNERS = ["@v12345vtm"]
 DEPENDENCIES = ["uart"]
+# elsner.h gebruikt de klassen van deze componenten. Zonder AUTO_LOAD ontbreken hun
+# headers in de build als er in de YAML geen sensor/binary_sensor/text_sensor/button staat.
+AUTO_LOAD = ["sensor", "binary_sensor", "text_sensor", "button"]
 MULTI_CONF = True
 
 elsner_ns = cg.esphome_ns.namespace("elsner")

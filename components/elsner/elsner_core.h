@@ -1,4 +1,4 @@
-// Versie: 0.2.0
+// Versie: 0.2.1
 //
 // Elsner P03/3 - protocol en frame-analyse (pure C++, geen ESPHome-afhankelijkheden).
 //
@@ -18,7 +18,7 @@
 
 namespace elsner_core {
 
-inline constexpr char COMPONENT_VERSION[] = "0.2.0";
+inline constexpr char COMPONENT_VERSION[] = "0.2.1";
 
 inline constexpr uint8_t ETX = 0x03;             // einde-van-frame (zelfde als HA ETX)
 inline constexpr uint32_t BAUDRATE = 19200;      // zelfde als HA BAUDRATE

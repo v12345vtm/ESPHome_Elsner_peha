@@ -1,4 +1,4 @@
-// Versie: 0.2.0
+// Versie: 0.2.1
 //
 // ESPHome-glue voor het Elsner weerstation: leest de UART, houdt de timers bij
 // en publiceert de waarden naar de entiteiten. De frame-logica zit in elsner_core.h.

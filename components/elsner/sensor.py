@@ -1,4 +1,4 @@
-# Versie: 0.2.0
+# Versie: 0.2.1
 """sensor-platform van de Elsner-component: één regel per numerieke meetwaarde."""
 import esphome.codegen as cg
 import esphome.config_validation as cv

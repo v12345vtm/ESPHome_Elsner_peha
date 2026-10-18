@@ -1,4 +1,4 @@
-# Versie: 0.2.0
+# Versie: 0.2.1
 """text_sensor-platform van de Elsner-component: tekstvelden en diagnose-tekst."""
 import esphome.codegen as cg
 import esphome.config_validation as cv
