@@ -1,4 +1,4 @@
-<!-- Versie: 0.2.0 -->
+<!-- Versie: 0.2.2 -->
 
 # Elsner P03/3 weerstation: ESPHome-variant
 
@@ -30,7 +30,7 @@ Het protocol, de velden en de throttle zijn gelijk aan de HA-versie. De timers e
 
 ```
 ESPHome_Elsner_peha/                      (root van deze repo)
-├── components/elsner/                    ESPHome-component (v0.2.0)  <- ESPHome haalt deze map op
+├── components/elsner/                    ESPHome-component (v0.2.2)  <- ESPHome haalt deze map op
 │   ├── __init__.py                       hub: UART en analyse_interval
 │   ├── const.py                          meetvelden met eenheid, icoon en device_class
 │   ├── sensor.py                         sensor-platform
@@ -223,7 +223,7 @@ UART-byte
 
 - **`elsner_core.h`.** Bevat de protocoltabellen (CET en GPS), de tekstfuncties (strippen, getal, J/N), de checksum en de `FrameParser`. Dit bestand heeft geen ESPHome-afhankelijkheden. Daardoor kan de paritytest het direct testen.
 - **`elsner.h` / `elsner.cpp`.** De ESPHome-component. Leest de UART in `loop()`, houdt de timers bij (frame-timeout, stale, tellers) en zet waarden op de entiteiten. Publiceert `NaN` voor numerieke sensoren om ze `unavailable` te maken.
-- **`__init__.py`.** De hub: de UART-koppeling en het `analyse_interval`. Registreert de C++-klasse.
+- **`__init__.py`.** De hub: de UART-koppeling en het `analyse_interval`. Registreert de C++-klasse. `AUTO_LOAD` zorgt dat de component-headers van `sensor`, `binary_sensor`, `text_sensor` en `button` altijd in de build zitten, ook als je geen entiteiten in je YAML zet.
 - **`const.py`.** Per meetveld de standaardwaarden: eenheid, icoon, device_class, aantal decimalen en entiteit-categorie. Die gelden als je ze zelf niet opgeeft.
 - **`sensor.py`, `binary_sensor.py`, `text_sensor.py`.** Elke entiteit in je YAML wordt hier gevalideerd. De `with_defaults()`-functie in `__init__.py` vult de standaardwaarden in vóór de validatie.
 - **`button.py`.** De reset-knop.
@@ -277,7 +277,7 @@ Elke hub heeft zijn eigen UART en zijn eigen `id`. De entiteiten moeten dan een 
 
 ## 6. Verschillen met de HA-integratie
 
-| Onderwerp | HA-integratie (0.0.8) | ESPHome-component (0.2.0) |
+| Onderwerp | HA-integratie (0.0.8) | ESPHome-component (0.2.2) |
 |---|---|---|
 | Configuratie | via de UI (config flow) | via YAML |
 | Checksum | berekend, maar niet gebruikt | berekend en als `checksum_valid` getoond; frames niet verworpen |
@@ -368,3 +368,5 @@ Het C++-binary draait ook zelftests: overflow, stale en het leegmaken van de buf
 | Versie | Wat |
 |---|---|
 | 0.2.0 | Eerste release als eigen repo. De ESPHome-component staat in `components/elsner/` in de root, en de package, readme en tests staan ernaast. De HA-integratie blijft in Elsner-Meteo_peha. `path:` is niet nodig. |
+| 0.2.1 | Fix: `AUTO_LOAD` toegevoegd voor `sensor`, `binary_sensor`, `text_sensor` en `button`. Zonder die regel faalde de build met `esphome/components/sensor/sensor.h: No such file` als de YAML geen entiteiten bevatte. |
+| 0.2.2 | Fix: verouderde `check_uart_settings()` en `LOG_UART_DEVICE` verwijderd uit de C++-code (ESPHome 2027.3 verwijdert ze). De baudrate en de RX-pin worden nu in Python gecontroleerd met `uart.final_validate_device_schema`. |
