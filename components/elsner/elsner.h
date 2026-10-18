@@ -1,4 +1,4 @@
-// Versie: 0.2.1
+// Versie: 0.2.2
 //
 // ESPHome-component voor het Elsner P03/3 weerstation (RS485).
 // Protocol en frame-logica staan in elsner_core.h; dit bestand koppelt die aan

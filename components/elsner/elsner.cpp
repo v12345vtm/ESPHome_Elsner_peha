@@ -1,4 +1,4 @@
-// Versie: 0.2.1
+// Versie: 0.2.2
 //
 // ESPHome-glue voor het Elsner weerstation: leest de UART, houdt de timers bij
 // en publiceert de waarden naar de entiteiten. De frame-logica zit in elsner_core.h.
@@ -18,7 +18,6 @@ using elsner_core::ProtocolDef;
 
 void ElsnerComponent::setup() {
   ESP_LOGI(TAG, "Elsner-component v%s gestart", elsner_core::COMPONENT_VERSION);
-  this->check_uart_settings(elsner_core::BAUDRATE);
   const uint32_t now = millis();
   last_frame_ms_ = now;
   last_counter_publish_ms_ = now;
@@ -182,7 +181,6 @@ void ElsnerComponent::reset_connection() {
 
 void ElsnerComponent::dump_config() {
   ESP_LOGCONFIG(TAG, "Elsner weather station (component v%s):", elsner_core::COMPONENT_VERSION);
-  LOG_UART_DEVICE(this);
   ESP_LOGCONFIG(TAG, "  Analyse interval: %u ms", static_cast<unsigned>(analyse_interval_ms_));
 }
 

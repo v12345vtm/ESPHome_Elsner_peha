@@ -1,4 +1,4 @@
-# Versie: 0.2.1
+# Versie: 0.2.2
 #
 # ESPHome-package voor het Elsner P03/3 weerstation (RS485).
 # Gebruik in je eigen YAML (zie example-bluetooth-proxy.yaml):

@@ -1,4 +1,4 @@
-# Versie: 0.2.1
+# Versie: 0.2.2
 """Constanten en standaardwaarden voor de ESPHome-variant van de Elsner-integratie.
 
 De sleutels (bijv. "temperature") zijn gelijk aan de veldnamen in protocols.py van de

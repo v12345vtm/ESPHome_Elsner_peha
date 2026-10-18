@@ -1,4 +1,4 @@
-// Versie: 0.2.1
+// Versie: 0.2.2
 //
 // Paritytest-binary voor components/elsner/elsner_core.h.
 // Leest regels van stdin:

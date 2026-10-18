@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Versie: 0.2.1
+# Versie: 0.2.2
 """Paritytest: de ESPHome-C++-parser moet dezelfde uitkomst geven als de HA-integratie.
 
 Wat er gebeurt:

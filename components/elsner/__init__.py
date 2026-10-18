@@ -1,4 +1,4 @@
-# Versie: 0.2.1
+# Versie: 0.2.2
 """Elsner P03/3 weerstation (RS485) - ESPHome-component.
 
 De hub leest het RS485-protocol van het weerstation via een UART en koppelt de
@@ -19,6 +19,12 @@ DEPENDENCIES = ["uart"]
 # headers in de build als er in de YAML geen sensor/binary_sensor/text_sensor/button staat.
 AUTO_LOAD = ["sensor", "binary_sensor", "text_sensor", "button"]
 MULTI_CONF = True
+
+# Controleert dat de UART 19200 baud heeft en een RX-pin. Vervangt de verouderde
+# check_uart_settings() in C++ (ESPHome 2027.3 verwijdert die).
+FINAL_VALIDATE_SCHEMA = uart.final_validate_device_schema(
+    "elsner", baud_rate=19200, require_rx=True
+)
 
 elsner_ns = cg.esphome_ns.namespace("elsner")
 ElsnerComponent = elsner_ns.class_("ElsnerComponent", cg.Component, uart.UARTDevice)

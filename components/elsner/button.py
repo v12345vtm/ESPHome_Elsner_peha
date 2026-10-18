@@ -1,4 +1,4 @@
-# Versie: 0.2.1
+# Versie: 0.2.2
 """button-platform van de Elsner-component: de reset-knop uit de HA-integratie."""
 import esphome.codegen as cg
 import esphome.config_validation as cv
